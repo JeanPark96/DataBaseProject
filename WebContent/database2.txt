@@ -11,24 +11,24 @@ CREATE TABLE student
 );
 
 INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
-('1616681', '1234', '정지솔', 'abc@gamil.com', 4, '숙명여자대학교', '컴퓨터과학과');
+('1616681', '1234', '정지솔', 'abc@gmail.com', 4, '숙명여자대학교', '컴퓨터과학과');
 INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
-('1616913', 'abcde', '박혜리', 'jean@gamil.com', 4, '숙명여자대학교', '컴퓨터과학과');
+('1616913', 'abcde', '박혜리', 'jean@gmail.com', 4, '숙명여자대학교', '컴퓨터과학과');
 
 INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
-('1414965', 'aabb', '박소연', 'park@gamil.com', 4, '숙명여자대학교', '컴퓨터과학과');
+('1414965', 'aabb', '박소연', 'park@gmail.com', 4, '숙명여자대학교', '컴퓨터과학과');
 INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
-('1912345', 'cdef', '김눈송', 'ccc@gamil.com', 1, '숙명여자대학교', 'IT공학과');
+('1912345', 'cdef', '김눈송', 'ccc@gmail.com', 1, '숙명여자대학교', 'IT공학과');
 
 INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
-('1445678', '5959', '남진선', 'nam@gamil.com', 4, '숙명여자대학교', '컴퓨터과학과');
+('1445678', '5959', '남진선', 'nam@gmail.com', 4, '숙명여자대학교', '컴퓨터과학과');
 INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
-('1812345', 'ab8282', '박숙명', 'sook@gamil.com', 2, '숙명여자대학교', '법학과');
+('1812345', 'ab8282', '박숙명', 'sook@gmail.com', 2, '숙명여자대학교', '법학과');
 
 INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
-('1717777', 'abc11', '정지솔', 'abc@gamil.com', 3, '숙명여자대학교', '멀티미디어학과');
+('1717777', 'abc11', '정지솔', 'abc@gmail.com', 3, '숙명여자대학교', '멀티미디어학과');
 INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
-('1515555', 'gogo', '정지솔', 'abc@gamil.com', 3, '숙명여자대학교', 'IT공학과');
+('1515555', 'gogo', '정지솔', 'abc@gmail.com', 3, '숙명여자대학교', 'IT공학과');
 
 CREATE TABLE professor
 (
