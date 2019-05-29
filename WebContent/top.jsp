@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <% String session_id = (String) session.getAttribute("user");
 String log;
 if (session_id == null)
-log = "<a href=login.jsp>К║°Й╥╦Л²╦</a>";
-else log = "<a href=logout.jsp>К║°Й╥╦Л∙└Л⌡┐</a>"; %>
+log = "<a href=login.jsp>╥н╠вюн</a>";
+else log = "<a href=logout.jsp>╥н╠в╬ф©Т</a>"; %>
 <table width="75%" align="center" bgcolor="#FFFF99" border>
 <tr>
 <td align="center"><b><%=log%></b></td>
-<td align="center"><b><a href="update.jsp">Л┌╛Л ╘Л·░ Л═∙КЁ╢ Л┬≤Л═∙</b></td>
-<td align="center"><b><a href="insert.jsp">Л┬≤Й╟∙Л▀═Л╡╜ Л·┘К═╔</b></td>
-<td align="center"><b><a href="delete.jsp">Л┬≤Й╟∙Л▀═Л╡╜ Л┌╜Л═°</b></td>
-<td align="center"><b><a href="select.jsp">Л┬≤Й╟∙Л▀═Л╡╜ Л║╟М ▄</b></td>
+<td align="center"><b><a href="update.jsp">╩Г©Кюз а╓╨╦ ╪Жа╓</b></td>
+<td align="center"><b><a href="insert.jsp">╪Ж╟╜╫ец╩ ют╥б</b></td>
+<td align="center"><b><a href="delete.jsp">╪Ж╟╜╫ец╩ ╩Ха╕</b></td>
+<td align="center"><b><a href="select.jsp">╪Ж╟╜╫ец╩ а╤х╦</b></td>
 </tr>
 </table>

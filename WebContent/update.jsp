@@ -1,14 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>í•™ìƒ ì •ë³´ ìˆ˜ì •</title>
+<meta http-equiv=¡±Content-Type¡± content=¡±text/html; charset=EUC-KR¡°>
+<title>ÇÐ»ý Á¤º¸ ¼öÁ¤</title>
 </head>
 <body>
 <%@ include file="./top.jsp" %>
 <%
+	request.setCharacterEncoding("EUC-KR");
 	session_id = (String) session.getAttribute("user");
 	if(session_id == null)
 		response.sendRedirect("login.jsp");
@@ -27,42 +29,39 @@
 	ResultSet myResultSet = stmt.executeQuery(mySQL);
 %>
 <br>
-<form method="post" action="user_update_verify.jsp">
+<form method="post" action="update_verify.jsp">
   <table width="600" border="1" cellspacing="0" cellpadding="3"  align="center">
 
     <tr> 
       <td colspan="2" height="39" align="center">
-         <font size="+1" ><b>í•™ìƒ ì •ë³´ ìˆ˜ì •</b></font></td>
+         <font size="+1" ><b>ÇÐ»ý Á¤º¸ ¼öÁ¤</b></font></td>
     </tr>
      <tr> 
-      <td width="200" align="center"><b>ì•„ì´ë”” í™•ì¸ ì •ë³´</b></td>
+      <td width="200" align="center"><b>¾ÆÀÌµð È®ÀÎ Á¤º¸</b></td>
       <td width="400">&nbsp;</td>
     </tr>  
     <tr> 
-      <td  width="200" align="center"> ì‚¬ìš©ìž ID </td>
-      <td  width="400"><%=studentID%><sup><font size="2" color="red">&nbsp; *ì‚¬ìš©ìž ì•„ì´ë””ëŠ” í•™ë²ˆìœ¼ë¡œ ìˆ˜ì •ë¶ˆê°€</font></sup></td>
+      <td  width="200" align="center"> »ç¿ëÀÚ ID </td>
+      <td  width="400"><%=studentID%><sup><font size="2" color="red">&nbsp; *»ç¿ëÀÚ ¾ÆÀÌµð´Â ÇÐ¹øÀ¸·Î ¼öÁ¤ºÒ°¡</font></sup></td>
     </tr>
 
 	<%
 	while(myResultSet.next() != false){ 
 		String s_pwd = myResultSet.getString("s_pwd");
-		String s_name = myResultSet.getString("s_name");
+		String s_name =myResultSet.getString("s_name");
 		String s_email = myResultSet.getString("s_email");%>
-		<input type="hidden" name="s_id"
-						size="15" value="<%=studentID%>">
+		<input type="hidden" name="s_id" size="15" value="<%=studentID%>">
 		<tr>
-					<td width="200" align="center"> ì´&nbsp;ë¦„</td>
+					<td width="200" align="center"> ÀÌ&nbsp;¸§</td>
 					<td width="400"><input type="text" name="s_name" size="15"
 						value="<%=s_name%>"></td>
 		</tr>
 		     <tr> 
-      <td width="200" align="center"> ë¹„ë°€ë²ˆí˜¸</td>
+      <td width="200" align="center"> ºñ¹Ð¹øÈ£</td>
       <td width="400"><input type="password" name="s_pwd"
 						size="15" value="<%=s_pwd%>"></td>
 				</tr>
 <tr> 
-      <td width="200" align="center"><b>ê°œì¸ì •ë³´</b></td>
-      <td width="400">&nbsp;</td>
     </tr>  
 			<tr>
 				<td width="200" align="center">E-mail</td>
@@ -73,8 +72,8 @@
 %> 
 			<tr> 
       <td colspan="2" align="center"> 
-       <input type="submit" name="modify" value="ìˆ˜   ì •" >
-       <input type="button" value="ì·¨  ì†Œ" onclick="javascript:window.location='main.jsp'">      
+       <input type="submit" name="modify" value="¼ö   Á¤" >
+       <input type="button" value="Ãë  ¼Ò" onclick="javascript:window.location='main.jsp'">      
       </td>
     </tr>
 </table>
