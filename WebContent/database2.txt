@@ -1,0 +1,163 @@
+CREATE TABLE student
+(
+    s_id		VARCHAR2(10),
+    s_pwd	VARCHAR2(10)   not null,
+    s_name	VARCHAR2(50)   not null,
+    s_email	VARCHAR2(100),
+    s_grade	NUMBER(1)   not null,
+    s_college	VARCHAR2(50)   not null,
+    s_major	VARCHAR2(50)   not null,
+    CONSTRAINT s_pk PRIMARY KEY (s_id)
+);
+
+INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
+('1616681', '1234', '정지솔', 'abc@gamil.com', 4, '숙명여자대학교', '컴퓨터과학과');
+INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
+('1616913', 'abcde', '박혜리', 'jean@gamil.com', 4, '숙명여자대학교', '컴퓨터과학과');
+
+INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
+('1414965', 'aabb', '박소연', 'park@gamil.com', 4, '숙명여자대학교', '컴퓨터과학과');
+INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
+('1912345', 'cdef', '김눈송', 'ccc@gamil.com', 1, '숙명여자대학교', 'IT공학과');
+
+INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
+('1445678', '5959', '남진선', 'nam@gamil.com', 4, '숙명여자대학교', '컴퓨터과학과');
+INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
+('1812345', 'ab8282', '박숙명', 'sook@gamil.com', 2, '숙명여자대학교', '법학과');
+
+INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
+('1717777', 'abc11', '정지솔', 'abc@gamil.com', 3, '숙명여자대학교', '멀티미디어학과');
+INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
+('1515555', 'gogo', '정지솔', 'abc@gamil.com', 3, '숙명여자대학교', 'IT공학과');
+
+CREATE TABLE professor
+(
+    p_id		VARCHAR2(10),
+    p_pwd	VARCHAR2(10)   not null,
+    p_name	VARCHAR2(50)   not null,
+    p_college	VARCHAR2(50)   not null,
+    p_major	VARCHAR2(50)   not null,
+    p_email	VARCHAR2(100),
+    CONSTRAINT p_pk PRIMARY KEY (p_id)
+);
+
+INSERT INTO professor(p_id, p_pwd, p_name, p_college, p_major, p_email) VALUES ('106425', '7325', '문봉희', '숙명여자대학교', '컴퓨터과학과', 'moon@sm.ac.kr');
+INSERT INTO professor(p_id, p_pwd, p_name, p_college, p_major, p_email) VALUES ('109001', '8768', '최영우', '숙명여자대학교', '컴퓨터과학과', 'ywchoi@sm.ac.kr');
+INSERT INTO professor(p_id, p_pwd, p_name, p_college, p_major, p_email) VALUES ('103817', '1234', '유석종', '숙명여자대학교', '컴퓨터과학과', ' sjyu@sm.ac.kr');
+
+INSERT INTO professor(p_id, p_pwd, p_name, p_college, p_major, p_email) VALUES ('118731', '6353', '이기용', '숙명여자대학교', '컴퓨터과학과', ' kiyonglee@sm.ac.kr');
+INSERT INTO professor(p_id, p_pwd, p_name, p_college, p_major, p_email) VALUES ('110391', '4125', '이현자', '숙명여자대학교', '컴퓨터과학과', 'hyunjalee@sookmyung.ac.kr');
+INSERT INTO professor(p_id, p_pwd, p_name, p_college, p_major, p_email) VALUES ('110312', '9752', '박숙영', '숙명여자대학교', '컴퓨터과학과', ' blue@sookmyung.ac.kr');
+
+
+INSERT INTO professor(p_id, p_pwd, p_name, p_college, p_major, p_email)  VALUES ('203321', '2369', '김경미', '숙명여자대학교', '심리학과', 'kmKim@sm.ac.kr');
+INSERT INTO professor(p_id, p_pwd, p_name, p_college, p_major, p_email)  VALUES ('233423', '9712', '신헌군', '숙명여자대학교', '체육교육과', 'hkshin@sm.ac.kr');
+INSERT INTO professor(p_id, p_pwd, p_name, p_college, p_major, p_email)  VALUES ('213351', '6547', '이가야', '숙명여자대학교', '프랑스언어문학과', 'gayaa@sm.ac.kr');
+INSERT INTO professor(p_id, p_pwd, p_name, p_college, p_major, p_email)  VALUES ('219812', '8865', '전지혜', '숙명여자대학교', '프랑스언어문학과', 'jihye.chun@sookmyung.ac.kr');
+INSERT INTO professor(p_id, p_pwd, p_name, p_college, p_major, p_email)  VALUES ('300988', '2359', '신희선', '숙명여자대학교', '기초교양학부', 'leader85@sookmyung.ac.kr');
+
+
+
+CREATE TABLE course
+(
+    c_id      VARCHAR2(10),
+    c_id_no   NUMBER(1),
+    c_name   VARCHAR2(50),
+    c_unit   NUMBER(1),
+    c_grade   NUMBER(1),
+    c_major   VARCHAR2(50),
+    CONSTRAINT c_pk PRIMARY KEY (c_id, c_id_no));
+
+
+INSERT INTO course (c_id,c_id_no,c_name,c_unit,c_grade,c_major) VALUES (
+'21003184',1,'데이터베이스프로그래밍',3,4,'컴퓨터과학부');
+
+INSERT INTO course (c_id,c_id_no,c_name,c_unit,c_grade,c_major) VALUES (
+'21003184',2,'데이터베이스프로그래밍',3,4,'컴퓨터과학부');
+
+INSERT INTO course (c_id,c_id_no,c_name,c_unit,c_grade,c_major) VALUES (
+'21001715',1,'컴파일러',3,4,'컴퓨터과학부');
+
+INSERT INTO course (c_id,c_id_no,c_name,c_unit) VALUES (
+'21002681',1,'교양골프',2);
+
+INSERT INTO course (c_id,c_id_no,c_name,c_unit) VALUES (
+'21103531',1,'젠더로읽는여성',2);
+
+INSERT INTO course (c_id,c_id_no,c_name,c_unit) VALUES (
+'21002300',1,'문학과사랑의테마',3);
+
+INSERT INTO course (c_id,c_id_no,c_name,c_unit) VALUES (
+'21002300',2,'문학과사랑의테마',3);
+
+INSERT INTO course (c_id,c_id_no,c_name,c_unit) VALUES (
+'21002300',3,'문학과사랑의테마',3);
+
+INSERT INTO course (c_id,c_id_no,c_name,c_unit) VALUES (
+'21002300',4,'문학과사랑의테마',3);
+
+INSERT INTO course (c_id,c_id_no,c_name,c_unit,c_grade,c_major) VALUES (
+'21003066',1,'데이터구조',3,2,'IT공학과');
+
+
+CREATE TABLE enroll
+(
+    s_id		VARCHAR2(10),
+    c_id		VARCHAR2(10),
+    c_id_no	NUMBER(1),
+    e_year	NUMBER(4),
+    e_semester	NUMBER(1),
+    c_score	VARCHAR2(2),
+    CONSTRAINT e_pk PRIMARY KEY (s_id, c_id, c_id_no),
+    CONSTRAINT s_id_fk FOREIGN KEY (s_id) REFERENCES  student (s_id),
+    CONSTRAINT e_c_id_fk FOREIGN KEY (c_id, c_id_no) REFERENCES  course (c_id, c_id_no)
+);
+
+
+INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616681', '21003184', 1, 2019, 1);
+INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616681', '21001715', 1, 2019, 1);
+INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616681', '21103531', 1, 2019, 1);
+
+INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616913', '21003184', 1, 2019, 1);
+INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616913', '21001715', 1, 2019, 1);
+INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616913', '21103531', 1, 2019, 1);
+INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616913', '21003066', 1, 2019, 1);
+
+INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1812345', '21002300', 2, 2019, 1);
+INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1812345', '21003184', 2, 2019, 2);
+INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1812345', '21002681', 1, 2019, 1);
+
+
+CREATE TABLE teach
+(
+    p_id	   VARCHAR2(10),
+    c_id	   VARCHAR2(10),
+    c_id_no  NUMBER(1),
+    t_year    NUMBER(4),
+    t_semester    NUMBER(1),
+    t_day    VARCHAR2(20),    t_time    VARCHAR2(20),
+    t_room  VARCHAR2(20),
+    t_max    NUMBER(3),
+    CONSTRAINT t_pk PRIMARY KEY (p_id, c_id, c_id_no,t_year,t_semester ),
+    CONSTRAINT p_id_fk FOREIGN KEY (p_id) REFERENCES  professor (p_id),
+    CONSTRAINT t_c_id_fk FOREIGN KEY
+ (c_id, c_id_no) REFERENCES  course (c_id, c_id_no));
+
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('118731', '21003184', 1, 2019, 1, '월,수', '9:00-10:15', '명신401', 40);
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('233423', '21002681', 1, 2019, 1, '월,수', '9:00-10:15', '명신404', 30);
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('106425', '21001715', 1, 2019, 1, '월,수', '12:00-13:15', '명신405', 40);
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('213351', '21002300', 1, 2019, 1, '월,수', '12:00-13:15', '명신408', 30);
+
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('110391', '21003184', 2, 2019, 1, '월,수', '13:30-14:45', '명신401', 40); 
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('213351', '21002300', 2, 2019, 1, '월,수', '13:30-14:45', '명신404', 30);
+
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('300988', '21103531', 1, 2019, 1, '화,목', '10:30-11:45', '명신401', 40);
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('219812', '21002300', 3, 2019, 1, '화,목', '10:30-11:45', '명신404', 30);
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('219812', '21002300', 4, 2019, 1, '화,목', '12:00-13:15', '명신405', 30);
+
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('103817', '21003066', 1, 2019, 1, '금', '13:00-15:45', '새힘관B103', 40);
+
+
+
+
+
