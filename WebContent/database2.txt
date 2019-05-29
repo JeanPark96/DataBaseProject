@@ -26,9 +26,9 @@ INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) V
 ('1812345', 'ab8282', '박숙명', 'sook@gmail.com', 2, '숙명여자대학교', '법학과');
 
 INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
-('1717777', 'abc11', '정지솔', 'abc@gmail.com', 3, '숙명여자대학교', '멀티미디어학과');
+('1717777', 'abc11', '김예린', 'abc@gmail.com', 3, '숙명여자대학교', '멀티미디어학과');
 INSERT INTO student(s_id, s_pwd, s_name, s_email, s_grade, s_college, s_major) VALUES 
-('1515555', 'gogo', '정지솔', 'abc@gmail.com', 3, '숙명여자대학교', 'IT공학과');
+('1515555', 'gogo', '한송이', 'abc@gmail.com', 3, '숙명여자대학교', 'IT공학과');
 
 CREATE TABLE professor
 (
