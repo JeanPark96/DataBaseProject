@@ -25,7 +25,7 @@
 	Class.forName(dbdriver);
 	myConn = DriverManager.getConnection(dburl, user, passwd);
 	stmt = myConn.createStatement();
-	mySQL = "select * from student where s_id = '" + studentID + "'";;
+	mySQL = "select * from student where s_id = '" + studentID + "'";
 	ResultSet myResultSet = stmt.executeQuery(mySQL);
 %>
 <br>
