@@ -143,19 +143,34 @@ CREATE TABLE teach
     CONSTRAINT t_c_id_fk FOREIGN KEY
  (c_id, c_id_no) REFERENCES  course (c_id, c_id_no));
 
-INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('118731', '21003184', 1, 2019, 1, '월,수', '9:00-10:15', '명신401', 40);
-INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('233423', '21002681', 1, 2019, 1, '월,수', '9:00-10:15', '명신404', 30);
-INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('106425', '21001715', 1, 2019, 1, '월,수', '12:00-13:15', '명신405', 40);
-INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('213351', '21002300', 1, 2019, 1, '월,수', '12:00-13:15', '명신408', 30);
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('118731', '21003184', 1, 2019, 2, '월,수', '9:00-10:15', '명신401', 40);
 
-INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('110391', '21003184', 2, 2019, 1, '월,수', '13:30-14:45', '명신401', 40); 
-INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('213351', '21002300', 2, 2019, 1, '월,수', '13:30-14:45', '명신404', 30);
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('233423', '21002681', 1, 2019, 2, '월,수', '9:00-10:15', '명신404', 30);
 
-INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('300988', '21103531', 1, 2019, 1, '화,목', '10:30-11:45', '명신401', 40);
-INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('219812', '21002300', 3, 2019, 1, '화,목', '10:30-11:45', '명신404', 30);
-INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('219812', '21002300', 4, 2019, 1, '화,목', '12:00-13:15', '명신405', 30);
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('106425', '21001715', 1, 2019, 2, '월,수', '12:00-13:15', '명신405', 40);
 
-INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('103817', '21003066', 1, 2019, 1, '금', '13:00-15:45', '새힘관B103', 40);
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('213351', '21002300', 1, 2019, 2, '월,수', '12:00-13:15', '명신408', 30);
+
+
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('110391', '21003184', 2, 2019, 2, '월,수', '13:30-14:45', '명신401', 40);
+ 
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('213351', '21002300', 2, 2019,2, '월,수', '13:30-14:45', '명신404', 30);
+
+
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('300988', '21103531', 1, 2019, 2, '화,목', '10:30-11:45', '명신401', 40);
+
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('219812', '21002300', 3, 2019, 2, '화,목', '10:30-11:45', '명신404', 30);
+
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('219812', '21002300', 4, 2019, 2, '화,목', '12:00-13:15', '명신405', 30);
+
+
+INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('103817', '21003066', 1, 2019, 2, '금', '13:00-15:45', '새힘관B103', 40);
+
+
+
+
+
+
 
 
 
