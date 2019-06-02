@@ -63,7 +63,7 @@
 	
 	<table width="75%" align="center" id="select_table">
 		<tr>
-			<th>과목번호</th><th>분반</th><th>과목명</th><th>강사</th><th>강의시간</th>
+			<th>과목번호</th><th>분반</th><th>과목명</th><th>강사</th> <th>강의시간</th>
 			<th>강의장소</th><th>수강인원</th>
 		</tr>
 <%			
