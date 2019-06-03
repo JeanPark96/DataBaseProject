@@ -160,6 +160,5 @@
 		<p><%=search_year %>년 <%=search_semester %>학기 수강신청 검색 결과 : </p>
 		<p>현재까지 <%=total_course %>과목, 총 <%=total_unit %>학점 수강신청 했습니다 </p>
 	</div>
-	</table>
 </body>
 </html>
