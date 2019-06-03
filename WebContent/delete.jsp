@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import="java.sql.*" %>  
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>수강신청</title>
+</head>
+<body>
+<% 
+	String yearStr = request.getParameter("year");
+	String semesterStr = request.getParameter("semester");
+	String c_id = request.getParameter("c_id");
+	String c_id_no = request.getParameter("c_id_no");
+	
+	int year = Integer.parseInt(yearStr);
+	int semester = Integer.parseInt(semesterStr);
+	String session_id = (String)session.getAttribute("userID");
+	String s_id = session_id;
+	
+	Connection myConn = null;
+	Statement stmt = null;
+	String mySQL = null;
+	String dburl = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String user = "db";
+	String passwd = "0000";
+	String dbdriver = "oracle.jdbc.driver.OracleDriver";
+	Class.forName(dbdriver);
+	myConn = DriverManager.getConnection(dburl, user, passwd);
+	stmt = myConn.createStatement();
+	mySQL = "DELETE FROM enroll WHERE s_id='"+s_id+"' and c_id='"+c_id+"' and c_id_no='"+c_id_no+"'";
+	ResultSet myResultSet = stmt.executeQuery(mySQL);
+	%>
+	
+	<script>
+		alert("수강취소가 완료 되었습니다.");
+		window.location.href="./enroll_page.jsp?year="+<%=year%>+"&semester="+<%=semester%>+"&type=selectAll&value=";
+	</script>
+
+</body>
+</html>
