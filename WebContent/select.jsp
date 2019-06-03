@@ -63,7 +63,7 @@
 	
 	<table width="75%" align="center" id="select_table">
 		<tr>
-			<th>과목번호</th><th>분반</th><th>과목명</th><th>강의시간</th>
+			<th>과목번호</th><th>분반</th><th>과목명</th><th>강사</th> <th>강의시간</th>
 			<th>강의장소</th><th>수강인원</th>
 		</tr>
 <%			
@@ -79,6 +79,7 @@
 		pstmt.setInt(3, Integer.parseInt(search_semester));
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
+			
 			course_id = rs.getString("c_id");
 			course_id_no = rs.getInt("c_id_no");
 			
@@ -101,7 +102,7 @@
 			sub_rs = pstmt.executeQuery();
 			if (sub_rs.next()) {
 				professor_id = sub_rs.getString("p_id");
-				int_course_day = "" + sub_rs.getInt("t_day");				
+				int_course_day = sub_rs.getString("t_day");	//t_day 는 문자열 월 수 			
 				
 				course_time = "" + sub_rs.getString("t_time");
 				course_place = sub_rs.getString("t_room"); 
@@ -122,21 +123,22 @@
 			sub_rs = pstmt.executeQuery();
 			if (sub_rs.next())
 				current_student_num++;
-			
+			/*
 			sql = "{? = call getStrDay(?)}";
 			cstmt = conn.prepareCall(sql);
 			cstmt.registerOutParameter(1, java.sql.Types.VARCHAR);
 			cstmt.setString(2, int_course_day);
 			cstmt.execute();
-			str_course_day = cstmt.getString(1);
+			str_course_day = cstmt.getString(1);*/
 			
 %>
+
 		<tr>
 			<td align="center"><%=course_id %></td>
 			<td align="center"><%=course_id_no %></td>
 			<td align="center"><%=course_name %></td>
 			<td align="center"><%=professor_name %></td>
-			<td align="center"><%=str_course_day %> <%=course_time %></td>
+			<td align="center"><%=int_course_day %> <%=course_time %></td>
 			<td align="center"><%=course_place %></td>
 			<td align="center"><%=course_unit %></td>
 
