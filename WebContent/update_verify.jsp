@@ -5,7 +5,6 @@
 <head>
 <title>수강신청 사용자 정보 수정 확인</title></head>
 <%
-		 //request.setCharacterEncoding("EUC-KR");
          String s_id = request.getParameter("s_id");
          String s_pwd = request.getParameter("s_pwd");
          String s_name= new String(request.getParameter("s_name").getBytes("8859_1"),"EUC-KR");
@@ -46,7 +45,7 @@
 	  catch(SQLException ex) {
 	     	String sMessage;
 		if(ex.getErrorCode() == 20002)
-			sMessage = "암호는 4자리 이상이어야 합니다.";
+			sMessage = "암호는 최소 4자리 이상이어야 합니다.";
 		else if(ex.getErrorCode() == 20003)
 			sMessage = "암호에 공란은 입력되지 않습니다.";
 		else

@@ -1,35 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-    <%@page import="java.sql.*"%>
+<%@ page import="java.sql.*" %>  
 <%@ include file="top.jsp" %>
-<%
-	if (session_id == null) 
-		response.sendRedirect("login.jsp");
-%>
-<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width", initial-scale="1" >        
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<title>수강신청 조회</title>
-	<script>
-		function onSearch() {
-			var fr = document.getElementById("select_form");
-			var search_year = fr.search_year.value;
-			var search_semester = fr.search_semester.value;
-			location.href = "select.jsp?search_year=" + search_year + "&search_semester=" + search_semester;
-		}
-	</script>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta name="viewport" content="width=device-width", initial-scale="1" >        
+<link rel="stylesheet" href="css/bootstrap.css">
+<title>수강신청</title>
 </head>
 <body>
 <% 
-	String search_year = request.getParameter("search_year");
-	String search_semester = request.getParameter("search_semester");
- 	if (search_year == null)
-		search_year = "2019";
-	if (search_semester == null)
-		search_semester = "2";
+	Statement stmt = null;
+	String mySQL = null;
+	ResultSet myResultSet =null;
+	String dburl = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String user = "db";
+	String passwd = "0000";
+	String dbdriver = "oracle.jdbc.driver.OracleDriver";
+	Class.forName(dbdriver);
+	
+	session_id = (String) session.getAttribute("user");
+	if(session_id == null)
+		response.sendRedirect("login.jsp");
+	String s_id = session_id;
+	
+
 	String course_id;
 	int course_id_no;
 	String course_name = "";
@@ -49,47 +45,50 @@
 	CallableStatement cstmt = null; 
 	ResultSet rs = null;
 	ResultSet sub_rs = null;
+	ResultSet resultSet=null;
 	String sql;
 	String sub_sql;
-	String dburl = "jdbc:oracle:thin:@localhost:1521:orcl";
-	String user = "db";                                       
-	String passwd = "0000";
-%>
-	<form method="post" width="75%" align="center" id="select_form" action="select.jsp"> 
-		<br/>
-		<br/>
-		<div class="col-sm-offset-1 form-inline">
-			<div class="form-group">
-   	    		<label for="inputYear">년도</label>
-      			<input type="text" class="form-control" name="search_year" value="<%=search_year %>" size="10"/>
-      		</div>
-      		<div class="form-group">
-   				<label for="inputSemester" class="control-label">학기</label>
-      			<input type="text" class="form-control" name="search_semester" value="<%=search_semester %>" size="10"/>
-      		</div>
-   			<input class="btn btn-primary btn-sm form-control" type="button" value="SEARCH" onclick="onSearch()"/>
-  		</div>
-  		<br/>
-	</form>
+	conn = DriverManager.getConnection(dburl, user, passwd);
+	
+	String year = "";
+	String semester = "";
+	int month=0;
+	
+	stmt = conn.createStatement();
+	mySQL="SELECT to_char(sysdate, 'YYYY'), to_number(to_char(sysdate, 'MM')) FROM DUAL";
+	
+	myResultSet = stmt.executeQuery(mySQL);
+	
+	while(myResultSet.next()){ 
+		year = myResultSet.getString(1);
+		month = myResultSet.getInt(2);
+	}
+	if(year==null) year="2019";
+	if(month==0) month=5; 
+	if(month>=5 && month<10){
+		semester="2";
+	}else
+		semester="1";
+	
+	%>
 	<div class="container">
 	<table width="75%" align="center" id="select_table" class="table table-hover table-bordered">
 		<thead style="text-align:center">
 		<tr class="info">
 			<th>과목번호</th><th>분반</th><th>과목명</th><th>강사</th> <th>강의시간</th>
-			<th>강의장소</th><th>수강인원</th>
+			<th>강의장소</th><th>수강인원</th><th>삭제</th>
 		</tr>
 		</thead>
 <%			
-	try {
-		Class.forName("oracle.jdbc.driver.OracleDriver");            
-		conn = DriverManager.getConnection(dburl, user, passwd);
+	try {           
+		
 		
 			sql = "SELECT c_id, c_id_no FROM enroll WHERE s_id = ? and e_year = ? and e_semester = ?";
 		
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, session_id);
-		pstmt.setInt(2, Integer.parseInt(search_year));
-		pstmt.setInt(3, Integer.parseInt(search_semester));
+		pstmt.setInt(2, Integer.parseInt(year));
+		pstmt.setInt(3, Integer.parseInt(semester));
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
 			
@@ -136,15 +135,7 @@
 			sub_rs = pstmt.executeQuery();
 			if (sub_rs.next())
 				current_student_num++;
-			/*
-			sql = "{? = call getStrDay(?)}";
-			cstmt = conn.prepareCall(sql);
-			cstmt.registerOutParameter(1, java.sql.Types.VARCHAR);
-			cstmt.setString(2, int_course_day);
-			cstmt.execute();
-			str_course_day = cstmt.getString(1);*/
-			
-%>
+	%>
 
 		<tr>
 			<td align="center"><%=course_id %></td>
@@ -154,7 +145,7 @@
 			<td align="center"><%=int_course_day %> <%=course_time %></td>
 			<td align="center"><%=course_place %></td>
 			<td align="center"><%=course_unit %></td>
-
+			<td><a class="btn btn-default btn-sm form-control" href="delete_verify.jsp?year<%=year%>&semester<%=semester%>&c_id=<%=course_id%>&c_id_no=<%=course_id_no%>">삭제</a></td>
 <%
 		}
 		rs.close();
@@ -171,7 +162,6 @@
 	<br/>
 	<br/>
 	<div width="75%" align="center">
-		<p><%=search_year %>년 <%=search_semester %>학기 수강신청 검색 결과 : </p>
 		<p>현재까지 <%=total_course %>과목, 총 <%=total_unit %>학점 수강신청 했습니다 </p>
 	</div>
 </body>
