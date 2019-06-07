@@ -1,9 +1,9 @@
-<%@ page language="java"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <% String session_id = (String) session.getAttribute("user");
 String log;
 if (session_id == null)
-log = "<a href=login.jsp>ë¡œê·¸ì¸</a>";
-else log = "<a href=logout.jsp>ë¡œê·¸ì•„ì›ƒ</a>"; %>
+log = "<a href=login.jsp>·Î±×ÀÎ</a>";
+else log = "<a href=logout.jsp>·Î±×¾Æ¿ô</a>"; %>
 <nav class ="navbar navbar-default">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed"
@@ -13,15 +13,16 @@ else log = "<a href=logout.jsp>ë¡œê·¸ì•„ì›ƒ</a>"; %>
                 <span class ="icon-bar"></span>
                 <span class ="icon-bar"></span>
             </button>
-            <a class ="navbar-brand" href="main.jsp">ìˆ™ëª…ì—¬ìžëŒ€í•™êµ</a>
+            <a class ="navbar-brand" href="main.jsp">¼÷¸í¿©ÀÚ´ëÇÐ±³</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
             	<li><%=log%></li>
-                <li><a href="update.jsp">ì‚¬ìš©ìž ì •ë³´ ìˆ˜ì •</a></li>
-                <li><a href="insert.jsp">ìˆ˜ê°•ì‹ ì²­ ìž…ë ¥</a></li>
-                <li><a href="delete.jsp">ìˆ˜ê°•ì‹ ì²­ ì‚­ì œ</a></li>
-                <li><a href="select.jsp">ìˆ˜ê°•ì‹ ì²­ ì¡°íšŒ</a></li>
+                <li><a href="update.jsp">»ç¿ëÀÚ Á¤º¸ ¼öÁ¤</a></li>
+                <li><a href="insert.jsp">¼ö°­ ½ÅÃ» ÀÔ·Â</a></li>
+                <li><a href="delete.jsp">¼ö°­ ½ÅÃ» »èÁ¦</a></li>
+                <li><a href="select.jsp">¼ö°­ ½ÅÃ» Á¶È¸</a></li>
+                <li><a href="searchCourse.jsp">°ú¸ñ Á¶È¸</a></li>
             </ul>
         </div>
     </nav>

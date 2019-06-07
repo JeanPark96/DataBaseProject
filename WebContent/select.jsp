@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-    <%@page import="java.sql.*"%>
+<%@page import="java.sql.*"%>
 <%@ include file="top.jsp" %>
 <%
 	if (session_id == null) 
@@ -20,6 +20,8 @@
 			var search_semester = fr.search_semester.value;
 			location.href = "select.jsp?search_year=" + search_year + "&search_semester=" + search_semester;
 		}
+	
+		
 	</script>
 </head>
 <body>
@@ -71,12 +73,13 @@
   		</div>
   		<br/>
 	</form>
+	
 	<div class="container">
 	<table width="75%" align="center" id="select_table" class="table table-hover table-bordered">
 		<thead style="text-align:center">
 		<tr class="info">
 			<th>과목번호</th><th>분반</th><th>과목명</th><th>강사</th> <th>강의시간</th>
-			<th>강의장소</th><th>수강인원</th>
+			<th>강의장소</th><th>학점</th>
 		</tr>
 		</thead>
 <%			
