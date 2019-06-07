@@ -10,6 +10,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width", initial-scale="1" >        
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<title>수강신청 조회</title>
 	
 </head>
@@ -53,24 +55,30 @@
 	<form method="post" width="75%" align="center" id="search" action="searchCourse.jsp"> 
 		<br/>
 		<br/>
-		<select name="option" id="optionSelect">
- 			<option value="all">전체</option>
-			<option value="c_id">과목 번호</option>
-			<option value="c_name">과목 이름</option>
-			<option value="c_major">전공</option></select>
-		<input name="val" id="enterValue" size="30">
-	    <button>검색</button>    
+		<div class="col-sm-offset-1 form-inline">
+		<select class="form-control" name="option" id="optionSelect">
+ 			<option class="form-control" value="all">전체</option>
+			<option class="form-control" value="c_id">과목 번호</option>
+			<option class="form-control" value="c_name">과목 이름</option>
+			<option class="form-control" value="c_major">전공</option></select>
+		<input class="form-control" name="val" id="enterValue" size="30">
+	    <button class="btn btn-primary btn-sm form-control">SEARCH</button>
+  		</div>
+  		<br/>   
 	</form>
 	<script>
 		document.getElementById("optionSelect").value = "<%=option%>";
 		document.getElementById("enterValue").value = "<%=val%>";
 	</script>
-	<table width="75%" align="center" id="select_table">
-		<tr>
+	<div class="container">
+	<table width="75%" align="center" id="select_table" class="table table-hover table-bordered">
+		<thead style="text-align:center">
+		<tr class="info">
 			<th>과목번호</th><th>분반</th><th>과목 이름</th><th>전공</th><th>강사</th> <th>강의시간</th>
 			<th>강의장소</th><th>학점</th>
 		</tr>
-	
+		</thead>
+
 <%			
 	try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");            
@@ -146,6 +154,7 @@
 %>
 		</tr>
 	</table>
+	</div>
 	<br/>
 	<br/>
 </body>
