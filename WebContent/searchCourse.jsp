@@ -11,26 +11,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>수강신청 조회</title>
-	<script>
-		function onSearch() {
-			var fr = document.getElementById("select_form");
-			var search_year = fr.search_year.value;
-			var search_semester = fr.search_semester.value;
-			location.href = "select.jsp?search_year=" + search_year + "&search_semester=" + search_semester;
-		}
 	
-		
-	</script>
 </head>
 <body>
 <% 
-	String search_year = request.getParameter("search_year");
-	String search_semester = request.getParameter("search_semester");
- 	if (search_year == null)
-		search_year = "2019";
-	if (search_semester == null)
-		search_semester = "2";
+	request.setCharacterEncoding("EUC-KR");
+	String val= request.getParameter("val");
+	String option=request.getParameter("option");
+	if (option == null)
+		option = "all";
+
+	
 	String course_id;
+	String course_major;
 	int course_id_no;
 	String course_name = "";
 	int course_unit = 0;
@@ -47,6 +40,7 @@
 	Connection conn = null;		
 	PreparedStatement pstmt = null;
 	CallableStatement cstmt = null; 
+	Statement stmt=null;
 	ResultSet rs = null;
 	ResultSet sub_rs = null;
 	String sql;
@@ -55,57 +49,60 @@
 	String user = "db";                                       
 	String passwd = "0000";
 %>
-	<form method="post" width="75%" align="center" id="select_form" action="select.jsp"> 
-		<br/>
-		<br/>
-		년도 <input type="text" name="search_year" value="<%=search_year %>" size="10"/>
-		학기 <input type="text" name="search_semester" value="<%=search_semester %>" size="10"/>
-		<input type="button" value="SEARCH" onclick="onSearch()"/>
-	</form>
 	
+	<form method="post" width="75%" align="center" id="search" action="searchCourse.jsp"> 
+		<br/>
+		<br/>
+		<select name="option" id="optionSelect">
+ 			<option value="all">전체</option>
+			<option value="c_id">과목 번호</option>
+			<option value="c_name">과목 이름</option>
+			<option value="c_major">전공</option></select>
+		<input name="val" id="enterValue" size="30">
+	    <button>검색</button>    
+	</form>
+	<script>
+		document.getElementById("optionSelect").value = "<%=option%>";
+		document.getElementById("enterValue").value = "<%=val%>";
+	</script>
 	<table width="75%" align="center" id="select_table">
 		<tr>
-			<th>과목번호</th><th>분반</th><th>과목명</th><th>강사</th> <th>강의시간</th>
+			<th>과목번호</th><th>분반</th><th>과목 이름</th><th>전공</th><th>강사</th> <th>강의시간</th>
 			<th>강의장소</th><th>학점</th>
 		</tr>
-		
+	
 <%			
 	try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");            
 		conn = DriverManager.getConnection(dburl, user, passwd);
+		stmt = conn.createStatement();
 		
-			sql = "SELECT c_id, c_id_no FROM enroll WHERE s_id = ? and e_year = ? and e_semester = ?";
-		
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, session_id);
-		pstmt.setInt(2, Integer.parseInt(search_year));
-		pstmt.setInt(3, Integer.parseInt(search_semester));
-		rs = pstmt.executeQuery();
-		while (rs.next()) {
+		sql = "select * from course";
+		if(option.equals("c_id")) {
+			sql = "select * from course where c_id LIKE '%" + val + "%'";
+		} else if(option.equals("c_name")){
+			sql = "select * from course where c_name LIKE '%" + val + "%'";
+		} else if(option.equals("c_major")){
+			sql = "select * from course where c_major LIKE '%" + val + "%'";
+		}
 			
+		rs = stmt.executeQuery(sql);
+		
+		while(rs.next()){
 			course_id = rs.getString("c_id");
-			course_id_no = rs.getInt("c_id_no");
+			course_id_no= rs.getInt("c_id_no");
+			course_name = rs.getString("c_name");
+			course_unit = rs.getInt("c_unit");
+			course_major=rs.getString("c_major");
 			
-			sub_sql = "SELECT c_name, c_unit FROM course WHERE c_id = ? and c_id_no = ?";
-			pstmt = conn.prepareStatement(sub_sql);
-			pstmt.setString(1, course_id);
-			pstmt.setInt(2, course_id_no);
-			sub_rs = pstmt.executeQuery();
-			if (sub_rs.next()) {
-				course_name = sub_rs.getString("c_name");
-				course_unit = sub_rs.getInt("c_unit");
-				total_unit = total_unit + course_unit;
-				total_course++;
-			}
-			
-			sub_sql = "SELECT p_id, t_day, t_time, t_room, t_max FROM teach WHERE c_id = ? and c_id_no = ?";
+			sub_sql = "SELECT p_id, t_day, t_time, t_room, t_max FROM teach WHERE c_id = ? and c_id_no=?";
 			pstmt = conn.prepareStatement(sub_sql);
 			pstmt.setString(1, course_id);
 			pstmt.setInt(2, course_id_no);
 			sub_rs = pstmt.executeQuery();
 			if (sub_rs.next()) {
 				professor_id = sub_rs.getString("p_id");
-				int_course_day = sub_rs.getString("t_day");	//t_day 는 문자열 월 수 			
+				int_course_day = sub_rs.getString("t_day");		
 				
 				course_time = "" + sub_rs.getString("t_time");
 				course_place = sub_rs.getString("t_room"); 
@@ -126,29 +123,21 @@
 			sub_rs = pstmt.executeQuery();
 			if (sub_rs.next())
 				current_student_num++;
-			/*
-			sql = "{? = call getStrDay(?)}";
-			cstmt = conn.prepareCall(sql);
-			cstmt.registerOutParameter(1, java.sql.Types.VARCHAR);
-			cstmt.setString(2, int_course_day);
-			cstmt.execute();
-			str_course_day = cstmt.getString(1);*/
-			
-%>
-
-		<tr>
+		
+	%>
+	<tr>
 			<td align="center"><%=course_id %></td>
 			<td align="center"><%=course_id_no %></td>
 			<td align="center"><%=course_name %></td>
+			<td align="center"><%=course_major %></td>
 			<td align="center"><%=professor_name %></td>
 			<td align="center"><%=int_course_day %> <%=course_time %></td>
 			<td align="center"><%=course_place %></td>
 			<td align="center"><%=course_unit %></td>
-
-<%
-		}
-		rs.close();
-		pstmt.close();
+			
+	<%
+	}
+		
 		conn.close();
 	} 
 	catch(SQLException ex) { 
@@ -159,9 +148,5 @@
 	</table>
 	<br/>
 	<br/>
-	<div width="75%" align="center">
-		<p><%=search_year %>년 <%=search_semester %>학기 수강신청 검색 결과 : </p>
-		<p>현재까지 <%=total_course %>과목, 총 <%=total_unit %>학점 수강신청 했습니다 </p>
-	</div>
 </body>
 </html>

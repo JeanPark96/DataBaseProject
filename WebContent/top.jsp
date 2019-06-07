@@ -11,5 +11,6 @@ else log = "<a href=logout.jsp>로그아웃</a>"; %>
 <td align="center"><b><a href="insert.jsp">수강신청 입력</b></td>
 <td align="center"><b><a href="delete.jsp">수강신청 삭제</b></td>
 <td align="center"><b><a href="select.jsp">수강신청 조회</b></td>
+<td align="center"><b><a href="searchCourse.jsp">과목 조회</b></td>
 </tr>
 </table>
