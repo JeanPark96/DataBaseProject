@@ -5,13 +5,18 @@
 <html>
 <head>
 <meta http-equiv=”Content-Type” content=”text/html; charset=EUC-KR“>
+<meta name="viewport" content="width=device-width", initial-scale="1" >        
+<link rel="stylesheet" href="css/bootstrap.css">
 <title>수강신청 입력</title>
 </head>
 <body>
 <%@ include file="./top.jsp" %>
-<table width="75%" align="center" border>
+<div class="container">
+<table width="75%" align="center" border class="table table-hover table-bordered">
 <br>
-<tr><th>과목번호</th><th>분반</th><th>과목명</th><th>학점</th><th>수강신청</th></tr>
+<thead style="text-align:center">
+	<tr class="info"><th  scope="col">과목번호</th><th>분반</th><th>과목명</th><th>학점</th><th>수강신청</th></tr>
+</thead>
 <%
 request.setCharacterEncoding("EUC-KR");
 session_id = (String) session.getAttribute("user");
@@ -45,13 +50,16 @@ int c_unit = myResultSet.getInt("c_unit"); %>
 <td align="center"><%= c_unit %></td>
 <td align="center">
 
-<a href="insert_verify.jsp?c_id=<%= c_id %>&c_id_no=<%= c_id_no %>">신청</a> 
+<a class="btn btn-default btn-sm form-control" href="insert_verify.jsp?c_id=<%= c_id %>&c_id_no=<%= c_id_no %>">신청</a> 
 </td>
 </tr>
+
 <%}
 }
 stmt.close();
 myConn.close();
 %>
+</table>
+</div>
 </body>
 </html>

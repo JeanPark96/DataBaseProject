@@ -1,15 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java"  pageEncoding="UTF-8"%>
 <% String session_id = (String) session.getAttribute("user");
 String log;
 if (session_id == null)
-log = "<a href=login.jsp>╥н╠вюн</a>";
-else log = "<a href=logout.jsp>╥н╠в╬ф©Т</a>"; %>
-<table width="75%" align="center" bgcolor="#FFFF99" border>
-<tr>
-<td align="center"><b><%=log%></b></td>
-<td align="center"><b><a href="update.jsp">╩Г©Кюз а╓╨╦ ╪Жа╓</b></td>
-<td align="center"><b><a href="insert.jsp">╪Ж╟╜╫ец╩ ют╥б</b></td>
-<td align="center"><b><a href="delete.jsp">╪Ж╟╜╫ец╩ ╩Ха╕</b></td>
-<td align="center"><b><a href="select.jsp">╪Ж╟╜╫ец╩ а╤х╦</b></td>
-</tr>
-</table>
+log = "<a href=login.jsp>К║°Й╥╦Л²╦</a>";
+else log = "<a href=logout.jsp>К║°Й╥╦Л∙└Л⌡┐</a>"; %>
+<nav class ="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expand="false">
+                <span class ="icon-bar"></span>
+                <span class ="icon-bar"></span>
+                <span class ="icon-bar"></span>
+            </button>
+            <a class ="navbar-brand" href="main.jsp">Л┬≥К╙┘Л≈╛Л·░К▄─М∙≥Й╣░</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+            	<li><%=log%></li>
+                <li><a href="update.jsp">Л┌╛Л ╘Л·░ Л═∙КЁ╢ Л┬≤Л═∙</a></li>
+                <li><a href="insert.jsp">Л┬≤Й╟∙Л▀═Л╡╜ Л·┘К═╔</a></li>
+                <li><a href="delete.jsp">Л┬≤Й╟∙Л▀═Л╡╜ Л┌╜Л═°</a></li>
+                <li><a href="select.jsp">Л┬≤Й╟∙Л▀═Л╡╜ Л║╟М ▄</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>

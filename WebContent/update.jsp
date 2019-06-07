@@ -4,7 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv=”Content-Type” content=”text/html; charset=EUC-KR“>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta name="viewport" content="width=device-width", initial-scale="1" >        
+<link rel="stylesheet" href="css/bootstrap.css">
 <title>학생 정보 수정</title>
 </head>
 <body>
@@ -29,54 +31,46 @@
 	ResultSet myResultSet = stmt.executeQuery(mySQL);
 %>
 <br>
-<form method="post" action="update_verify.jsp">
-  <table width="600" border="1" cellspacing="0" cellpadding="3"  align="center">
-
-    <tr> 
-      <td colspan="2" height="39" align="center">
-         <font size="+1" ><b>학생 정보 수정</b></font></td>
-    </tr>
-     <tr> 
-      <td width="200" align="center"><b>아이디 확인 정보</b></td>
-      <td width="400">&nbsp;</td>
-    </tr>  
-    <tr> 
-      <td  width="200" align="center"> 사용자 ID </td>
-      <td  width="400"><%=studentID%><sup><font size="2" color="red">&nbsp; *사용자 아이디는 학번으로 수정불가</font></sup></td>
-    </tr>
-
-	<%
+<form method="post" action="update_verify.jsp" class="form-horizontal">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-4 control-label">USER ID</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" name="s_id" value="<%=studentID%>" readonly>
+    </div>
+  </div>
+  <%
 	while(myResultSet.next() != false){ 
 		String s_pwd = myResultSet.getString("s_pwd");
 		String s_name =myResultSet.getString("s_name");
 		String s_email = myResultSet.getString("s_email");%>
-		<input type="hidden" name="s_id" size="15" value="<%=studentID%>">
-		<tr>
-					<td width="200" align="center"> 이&nbsp;름</td>
-					<td width="400"><input type="text" name="s_name" size="15"
-						value="<%=s_name%>"></td>
-		</tr>
-		     <tr> 
-      <td width="200" align="center"> 비밀번호</td>
-      <td width="400"><input type="password" name="s_pwd"
-						size="15" value="<%=s_pwd%>"></td>
-				</tr>
-<tr> 
-    </tr>  
-			<tr>
-				<td width="200" align="center">E-mail</td>
-				<td width="400"><input type="text" name="s_email" size="50"
-					value="<%=s_email%>"></td>
-			</tr>
-<%}
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-4 control-label">NAME</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" name="s_name" value="<%=s_name%>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword4" class="col-sm-4 control-label">PASSWORD</label>
+    <div class="col-sm-4">
+      <input type="password" class="form-control" name="s_pwd" value="<%=s_pwd%>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword5" class="col-sm-4 control-label">EMAIL</label>
+    <div class="col-sm-4">
+      <input type="email" class="form-control" name="s_email" value="<%=s_email%>">
+    </div>
+  </div>
+  <%}
 %> 
-			<tr> 
-      <td colspan="2" align="center"> 
-       <input type="submit" name="modify" value="수   정" >
-       <input type="button" value="취  소" onclick="javascript:window.location='main.jsp'">      
-      </td>
-    </tr>
-</table>
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-2">
+      <input type="submit" class="btn btn-primary btn-block" name="modify" value="수 정" >
+    </div>
+    <div class="col-sm-2">
+      <input type="button" class="btn btn-primary btn-block" value="취소" onclick="javascript:window.location='main.jsp'">   
+    </div>
+  </div>
 </form>
 </body>
 </html>
