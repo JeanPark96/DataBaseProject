@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta name="viewport" content="width=device-width", initial-scale="1" >        
+<link rel="stylesheet" href="css/bootstrap.css">
 <title>수강신청</title>
 </head>
 <body>
@@ -69,11 +71,14 @@
 		semester="1";
 	
 	%>
-	<table width="75%" align="center" id="select_table">
-		<tr>
+	<div class="container">
+	<table id="select_table" class="table table-hover table-bordered">
+		<thead style="text-align:center">
+		<tr class="info">
 			<th>과목번호</th><th>분반</th><th>과목명</th><th>강사</th> <th>강의시간</th>
 			<th>강의장소</th><th>수강인원</th><th>삭제</th>
 		</tr>
+		</thead>
 <%			
 	try {           
 		
@@ -140,7 +145,7 @@
 			<td align="center"><%=int_course_day %> <%=course_time %></td>
 			<td align="center"><%=course_place %></td>
 			<td align="center"><%=course_unit %></td>
-			<td><a href="delete_verify.jsp?year<%=year%>&semester<%=semester%>&c_id=<%=course_id%>&c_id_no=<%=course_id_no%>">삭제</a></td>
+			<td><a class="btn btn-default btn-sm form-control" href="delete_verify.jsp?year<%=year%>&semester<%=semester%>&c_id=<%=course_id%>&c_id_no=<%=course_id_no%>">삭제</a></td>
 <%
 		}
 		rs.close();
@@ -153,6 +158,7 @@
 %>
 		</tr>
 	</table>
+	</div>
 	<br/>
 	<br/>
 	<div width="75%" align="center">
