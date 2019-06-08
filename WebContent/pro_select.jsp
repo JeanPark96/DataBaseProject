@@ -18,7 +18,7 @@
 			var fr = document.getElementById("select_form");
 			var search_year = fr.search_year.value;
 			var search_semester = fr.search_semester.value;
-			location.href = "select.jsp?search_year=" + search_year + "&search_semester=" + search_semester;
+			location.href = "pro_select.jsp?search_year=" + search_year + "&search_semester=" + search_semester;
 		}
 	
 		
