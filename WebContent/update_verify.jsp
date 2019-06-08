@@ -23,9 +23,6 @@
 		 stmt = myConn.createStatement();
 		 mySQL = "UPDATE student SET s_pwd=?, s_name=?, s_email=? WHERE s_id=?";
 	     
-	   /* mySQL = mySQL+ "SET s_pwd='" + s_pwd +"',";
-	     mySQL = mySQL + "s_name='"+ s_name + "',";
-	     mySQL = mySQL + "s_email='"+ s_email +"'WHERE s_id='" + s_id + "'";*/
 	     try {
 	    	 pstmt = myConn.prepareStatement(mySQL);
 	    	 pstmt.setString(1, s_pwd);
@@ -34,7 +31,6 @@
 	    	 pstmt.setString(4, s_id);
 	    	 ResultSet rs = pstmt.executeQuery();
 
-			//stmt.executeUpdate(mySQL);
 	%>
 	<script>
 	   alert("학생정보가 수정되었습니다." );
