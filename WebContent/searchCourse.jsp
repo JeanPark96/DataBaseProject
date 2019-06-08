@@ -12,7 +12,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width", initial-scale="1" >        
 	<link rel="stylesheet" href="css/bootstrap.css">
-	<title>수강신청 조회</title>
+	<title>과목 검색</title>
 	
 </head>
 <body>
