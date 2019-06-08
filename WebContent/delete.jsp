@@ -72,7 +72,7 @@
 	
 	%>
 	<div class="container">
-	<table width="75%" align="center" id="select_table" class="table table-hover table-bordered">
+	<table id="select_table" class="table table-hover table-bordered">
 		<thead style="text-align:center">
 		<tr class="info">
 			<th>과목번호</th><th>분반</th><th>과목명</th><th>강사</th> <th>강의시간</th>

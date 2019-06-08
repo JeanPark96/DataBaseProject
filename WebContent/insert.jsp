@@ -12,7 +12,7 @@
 <body>
 	<%@ include file="./top.jsp" %>
 	<div class="container">
-	<table width="75%" align="center" border class="table table-hover table-bordered">
+	<table class="table table-hover table-bordered">
 	<br>
 	<thead style="text-align:center">
 	<tr class="info"><th>과목번호</th><th>분반</th><th>과목명</th><th>학점</th><th>수강신청</th></tr>
