@@ -3,13 +3,14 @@
 <%@page import="java.sql.*"%>
 <html>
 <head>
-<title>수강신청 사용자 정보 수정 확인</title></head>
+<title>강사 사용자 정보 수정 확인</title></head>
 <%
-         String s_id = request.getParameter("s_id");
-         String s_pwd = request.getParameter("s_pwd");
-         String s_name= new String(request.getParameter("s_name").getBytes("8859_1"),"EUC-KR");
-  
-         String s_email =request.getParameter("s_email");
+         String p_id = request.getParameter("p_id");
+         String p_pwd = request.getParameter("p_pwd");
+         String p_name= new String(request.getParameter("p_name").getBytes("8859_1"),"EUC-KR");
+         String p_college= new String(request.getParameter("p_college").getBytes("8859_1"),"EUC-KR");
+         String p_major= new String(request.getParameter("p_major").getBytes("8859_1"),"EUC-KR");
+         String p_email =request.getParameter("p_email");
          Connection myConn = null;
          Statement stmt = null;
          String mySQL = ""; 
@@ -21,19 +22,21 @@
 	 	 myConn = DriverManager.getConnection(dburl, user, passwd);
 		 PreparedStatement pstmt = null;
 		 stmt = myConn.createStatement();
-		 mySQL = "UPDATE student SET s_pwd=?, s_name=?, s_email=? WHERE s_id=?";
+		 mySQL = "UPDATE professor SET p_pwd=?, p_name=?, p_email=?, p_college=?, p_major=? WHERE p_id=?";
 	     
 	     try {
 	    	 pstmt = myConn.prepareStatement(mySQL);
-	    	 pstmt.setString(1, s_pwd);
-	    	 pstmt.setString(2, s_name);
-	    	 pstmt.setString(3, s_email);
-	    	 pstmt.setString(4, s_id);
+	    	 pstmt.setString(1, p_pwd);
+	    	 pstmt.setString(2, p_name);
+	    	 pstmt.setString(3, p_email);
+	    	 pstmt.setString(4, p_college);
+	    	 pstmt.setString(5, p_major);
+	    	 pstmt.setString(6, p_id);
 	    	 ResultSet rs = pstmt.executeQuery();
 	%>
 	<script>
-	   alert("학생정보가 수정되었습니다." );
-	   location.href = "update.jsp";
+	   alert("강사정보가 수정되었습니다." );
+	   location.href = "pro_update.jsp";
 	</script>
 	<%
 	}
@@ -48,7 +51,7 @@
 	%>
 	<script>
 	    alert("<%=sMessage%>" );
-	    location.href = "update.jsp";
+	    location.href = "pro_update.jsp";
 	</script>
 <% }%>
 
