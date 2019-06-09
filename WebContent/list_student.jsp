@@ -36,7 +36,6 @@ ResultSet sub_rs = null;
 
 <%@include file="top.jsp"%>
 
-<tr> <td align="center">수강생 조회</td> </tr>
 <div class="container">
 	<table width="75%" align="center" id="select_table" class="table table-hover table-bordered">
 		<thead style="text-align:center">
@@ -80,6 +79,7 @@ try {
 <%
 		}
 		rs.close();
+		sub_rs.close();
 		pstmt.close();
 		conn.close();
 	} 
@@ -89,6 +89,10 @@ try {
 %>
 		</tr>
 	</table>
+	</div>
+	<br/>
+	<br/>
+	<div width="75%" align="center">
 	</div>
 </body>
 </html>

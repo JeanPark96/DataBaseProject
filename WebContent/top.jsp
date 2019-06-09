@@ -39,8 +39,8 @@ else log = "<a href=logout.jsp>로그아웃</a>";
                 <% } 
             	else{ %>
             	 <li><a href="pro_update.jsp">사용자 정보 수정</a></li>
-                <li><a href="insert.jsp">수업과목 추가</a></li>
-                <li><a href="delete.jsp">수업과목 삭제</a></li>
+                <li><a href="pro_insert.jsp">수업과목 추가</a></li>
+                <li><a href="pro_delete.jsp">수업과목 삭제</a></li>
                 <li><a href="pro_select.jsp">수업과목 조회</a></li>
                 <% } %>
             </ul>
