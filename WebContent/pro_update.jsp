@@ -9,7 +9,7 @@
 <title>강사 사용자 정보 수정</title>
 </head>
 <body>
-<%@ include file="./top.jsp" %>
+<%@ include file="top.jsp" %>
 <%
 	request.setCharacterEncoding("EUC-KR");
 	session_id = (String) session.getAttribute("prof");
