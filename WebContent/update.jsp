@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <meta name="viewport" content="width=device-width", initial-scale="1" >        
 <link rel="stylesheet" href="css/bootstrap.css">
-<title>학생 정보 수정</title>
+<title>수강신청 사용자 정보 수정</title>
 </head>
 <body>
 <%@ include file="./top.jsp" %>
@@ -65,7 +64,7 @@
 %> 
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-2">
-      <input type="submit" class="btn btn-primary btn-block" name="modify" value="수 정" >
+      <input type="submit" class="btn btn-primary btn-block" name="modify" value="수정" >
     </div>
     <div class="col-sm-2">
       <input type="button" class="btn btn-primary btn-block" value="취소" onclick="javascript:window.location='main.jsp'">   
