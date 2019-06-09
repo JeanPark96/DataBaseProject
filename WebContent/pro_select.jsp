@@ -95,7 +95,6 @@
 		pstmt.setInt(3, Integer.parseInt(search_semester));
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
-			
 			course_id = rs.getString("c_id");
 			course_id_no = rs.getInt("c_id_no");
 			
@@ -131,12 +130,14 @@
 			if (sub_rs.next())
 				professor_name = sub_rs.getString("p_name");
 			
-			sub_sql = "SELECT s_id FROM enroll WHERE c_id = ? and c_id_no = ?";
+			sub_sql = "SELECT s_id FROM enroll WHERE c_id = ? and c_id_no = ? and e_semester = ? and e_year = ?";
 			pstmt = conn.prepareStatement(sub_sql);
 			pstmt.setString(1, course_id);
 			pstmt.setInt(2, course_id_no);
+			pstmt.setString(3, search_semester);
+			pstmt.setString(4, search_year);
 			sub_rs = pstmt.executeQuery();
-			if (sub_rs.next())
+			while (sub_rs.next())
 				current_student_num++;
 			/*
 			sql = "{? = call getStrDay(?)}";
@@ -156,7 +157,9 @@
 			<td align="center"><%=int_course_day %> <%=course_time %></td>
 			<td align="center"><%=course_place %></td>
 			<td align="center"><%=course_unit %></td>
-			<td><a class="btn btn-default btn-sm form-control" href="list_student.jsp?c_id=<%= course_id %>&c_id_no=<%= course_id_no %>">조회</a></td>
+			<% 		current_student_num = 0; %>
+			<td><a class="btn btn-default btn-sm form-control" href="list_student.jsp?c_id=
+			<%= course_id %>&c_id_no=<%= course_id_no %>&search_semester=<%=search_semester %>&search_year=<%=search_year%>">조회</a></td>
 
 <%
 		}

@@ -14,6 +14,8 @@
 <%
 String c_id = request.getParameter("c_id"); 
 int c_id_no = Integer.parseInt(request.getParameter("c_id_no"));
+String search_year = request.getParameter("search_year");
+String search_semester = request.getParameter("search_semester");
 
 String s_id = null;
 String s_name = null;
@@ -47,10 +49,12 @@ try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");            
 		conn = DriverManager.getConnection(dburl, user, passwd);
 		
-		sql = "SELECT s_id FROM enroll WHERE c_id = ? and c_id_no = ?";		
+		sql = "SELECT s_id FROM enroll WHERE c_id = ? and c_id_no = ? and e_year = ? and e_semester = ?";		
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, c_id);
 		pstmt.setInt(2, c_id_no);
+		pstmt.setString(3, search_year);
+		pstmt.setString(4, search_semester);
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
 			
