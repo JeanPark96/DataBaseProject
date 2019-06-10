@@ -71,6 +71,7 @@
 		semester="1";
 	
 	%>
+	<br>
 	<div class="container">
 	<table id="select_table" class="table table-hover table-bordered">
 		<thead style="text-align:center">
