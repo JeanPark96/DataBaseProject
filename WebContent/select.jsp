@@ -220,7 +220,7 @@ public int dayToVal(String day){
 		
 	<div class="timeTable">
 <%
-		
+
 		int len = int_course_day.length();
 		for(int i=0; i<len; i+=2){
 			int dayPos = 20 + 118*dayToVal(int_course_day.substring(i, i+1));
@@ -237,8 +237,6 @@ public int dayToVal(String day){
 		y += 80;
 		
 		}
-		//rs.close();
-		//pstmt.close();
 		%> 
 		</div>	
 		<br/><%

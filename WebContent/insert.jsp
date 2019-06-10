@@ -27,6 +27,7 @@
 	String studentID = session_id;
 	Connection myConn = null;
 	Statement stmt = null;
+	PreparedStatement pstmt=null;
 	String mySQL = null;
 	String dburl = "jdbc:oracle:thin:@localhost:1521:orcl";
 	String user = "db";
@@ -37,17 +38,35 @@
 	myConn = DriverManager.getConnection(dburl, user, passwd);
 	stmt = myConn.createStatement();
 	} catch(SQLException ex) { System.err.println("SQLException: " + ex.getMessage()); }
+	mySQL="SELECT to_number(to_char(sysdate, 'YYYY')), to_number(to_char(sysdate, 'MM')) FROM DUAL";
 	
-	mySQL = "SELECT c.c_id, c.c_id_no, c.c_name, c.c_unit, t.t_year, t.t_semester FROM course c, teach t WHERE c.c_id = t.c_id AND t.t_year = '2019' AND t.t_semester = '2' AND c.c_id_no=t.c_id_no AND (c.c_id) not in (select c_id from enroll where s_id='" + session_id + "') order by c.c_id ";
 	ResultSet myResultSet = stmt.executeQuery(mySQL);
+	int month=0;
+	while(myResultSet.next()){ 
+		nyear = myResultSet.getInt(1);
+		month = myResultSet.getInt(2);
+	}
+	
+	if(month==0) month=5; 
+	if(month>=5 && month<10){
+		nsemester=2;
+	}else
+		nsemester=1;
+	
+	mySQL = "SELECT c.c_id, c.c_id_no, c.c_name, c.c_unit, t.t_year, t.t_semester FROM course c, teach t WHERE c.c_id = t.c_id AND t.t_year = ? AND t.t_semester = ? AND c.c_id_no=t.c_id_no AND (c.c_id) not in (select c_id from enroll where s_id=?) order by c.c_id ";
+	pstmt = myConn.prepareStatement(mySQL);
+	pstmt.setInt(1, nyear);
+	pstmt.setInt(2, nsemester);
+	pstmt.setString(3,studentID);
+	myResultSet = pstmt.executeQuery();
 	if (myResultSet != null) {
 		while (myResultSet.next()) { // 수강신청가능과목. 학생이 미수강한과목    
-	String c_id = myResultSet.getString("c_id"); 
-	int c_id_no = myResultSet.getInt("c_id_no");
-	String c_name = myResultSet.getString("c_name");
-	int c_unit = myResultSet.getInt("c_unit");
-	int t_year = myResultSet.getInt("t_year"); 
-	int t_semester = myResultSet.getInt("t_semester");
+			String c_id = myResultSet.getString("c_id"); 
+			int c_id_no = myResultSet.getInt("c_id_no");
+			String c_name = myResultSet.getString("c_name");
+			int c_unit = myResultSet.getInt("c_unit");
+			int t_year = myResultSet.getInt("t_year"); 
+			int t_semester = myResultSet.getInt("t_semester");
 	%>
 	<td align="center"><%= c_id %></td>
 	<td align="center"><%= c_id_no %></td>
