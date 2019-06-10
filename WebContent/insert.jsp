@@ -18,6 +18,8 @@
 	<tr class="info"><th>과목번호</th><th>분반</th><th>과목명</th><th>학점</th><th>수강신청</th></tr>
 	</thead>
 	<%
+	int nyear = 2019;
+	int nsemester = 2;
 	request.setCharacterEncoding("EUC-KR");
 	session_id = (String) session.getAttribute("user");
 	if(session_id == null)
@@ -36,14 +38,17 @@
 	stmt = myConn.createStatement();
 	} catch(SQLException ex) { System.err.println("SQLException: " + ex.getMessage()); }
 	
-	mySQL = "select c_id,c_id_no,c_name,c_unit from course where c_id not in (select c_id from enroll where s_id='" + studentID + "')"; 
+	mySQL = "SELECT c.c_id, c.c_id_no, c.c_name, c.c_unit, t.t_year, t.t_semester FROM course c, teach t WHERE c.c_id = t.c_id AND t.t_year = '2019' AND t.t_semester = '2' AND c.c_id_no=t.c_id_no AND (c.c_id) not in (select c_id from enroll where s_id='" + session_id + "') order by c.c_id ";
 	ResultSet myResultSet = stmt.executeQuery(mySQL);
 	if (myResultSet != null) {
 		while (myResultSet.next()) { // 수강신청가능과목. 학생이 미수강한과목    
 	String c_id = myResultSet.getString("c_id"); 
 	int c_id_no = myResultSet.getInt("c_id_no");
-	String c_name = myResultSet.getString("c_name"); 
-	int c_unit = myResultSet.getInt("c_unit"); %>
+	String c_name = myResultSet.getString("c_name");
+	int c_unit = myResultSet.getInt("c_unit");
+	int t_year = myResultSet.getInt("t_year"); 
+	int t_semester = myResultSet.getInt("t_semester");
+	%>
 	<td align="center"><%= c_id %></td>
 	<td align="center"><%= c_id_no %></td>
 	<td align="center"><%= c_name %></td>
