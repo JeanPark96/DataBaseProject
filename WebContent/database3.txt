@@ -1,5 +1,19 @@
 INSERT INTO course (c_id,c_id_no,c_name,c_unit,c_grade,c_major) VALUES (
 '21002400',1,'데이터사이언스',3,1,'컴퓨터과학부');
+INSERT INTO course (c_id,c_id_no,c_name,c_unit,c_grade,c_major) VALUES (
+'21001234',1,'데이터마이닝',3,3,'컴퓨터과학부');
+INSERT INTO course (c_id,c_id_no,c_name,c_unit,c_grade,c_major) VALUES (
+'21001234',2,'데이터마이닝',3,3,'컴퓨터과학부');
+INSERT INTO course (c_id,c_id_no,c_name,c_unit,c_grade,c_major) VALUES (
+'21001234',3,'데이터마이닝',3,3,'컴퓨터과학부');
+INSERT INTO course (c_id,c_id_no,c_name,c_unit,c_grade,c_major) VALUES (
+'21001010',1,'윈도우프로그래밍',3,2,'컴퓨터과학부');
+INSERT INTO course (c_id,c_id_no,c_name,c_unit,c_grade,c_major) VALUES (
+'21001010',2,'윈도우프로그래밍',3,2,'컴퓨터과학부');
+
+INSERT INTO course (c_id,c_id_no,c_name,c_unit,c_grade,c_major) VALUES (
+'21001010',3,'윈도우프로그래밍',3,2,'컴퓨터과학부');
+
 
 
 INSERT INTO teach(p_id, c_id, c_id_no, t_year, t_semester, t_day, t_time, t_room, t_max) VALUES ('103817', '21003184', 1, 2019, 1, '월,수', '10:30-11:45', '명신402', 40);

@@ -34,7 +34,7 @@
 		search_semester = "2";
 	String course_id;
 	int course_id_no;
-	String course_name = "";
+	String course_name ="";
 	int course_unit = 0;
 	String professor_id = "";
 	String professor_name = "";
