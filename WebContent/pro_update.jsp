@@ -29,7 +29,7 @@
 	mySQL = "select * from professor where p_id = '" + profID + "'";
 	ResultSet myResultSet = stmt.executeQuery(mySQL);
 %>
-<br>
+<br><br><br>
 <form method="post" action="pro_update_verify.jsp" class="form-horizontal">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-4 control-label">USER ID</label>
