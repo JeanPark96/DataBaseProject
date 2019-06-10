@@ -156,11 +156,10 @@
 			<td align="center"><%=current_student_num%>/<%=max_student_num %></td>
 			<td align="center"><%=int_course_day %> <%=course_time %></td>
 			<td align="center"><%=course_place %></td>
-			<td align="center"><%=course_unit %></td>
-			<% 		current_student_num = 0; %>
+			<td align="center"><%=course_unit %></td>			
 			<td><a class="btn btn-default btn-sm form-control" href="list_student.jsp?c_id=
-			<%= course_id %>&c_id_no=<%= course_id_no %>&search_semester=<%=search_semester %>&search_year=<%=search_year%>">조회</a></td>
-
+			<%= course_id %>&c_id_no=<%= course_id_no %>&current_student=<%=current_student_num%>&search_semester=<%=search_semester %>&search_year=<%=search_year%>">조회</a></td>
+			<% 		current_student_num = 0; %>
 <%
 		}
 		rs.close();
