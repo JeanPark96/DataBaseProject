@@ -14,7 +14,8 @@
    request.setCharacterEncoding("EUC-KR");
    if (session_id==null) response.sendRedirect("login.jsp");  
 %> 
-      <table width="75%" align="center" id = "insert">
+	<div class="container">
+      <table id = "insert" class="table table-bordered">
       <br>
          <tr>
             <th>과목명</th>
@@ -28,19 +29,21 @@
          <tr></tr><tr></tr><tr></tr>
          <tr></tr><tr></tr><tr></tr>
          <tr>   </tr>
+         <tbody style="text-align:center">
          <form action="pro_insert_verify.jsp?id=<%=session_id%>" method="post">
-            <td align="center"><input type="text" name="c_name"></td>
-            <td align="center"><input type="text" name="c_unit" value="3" style="width:50px"></td>
-            <td align="center"><input type="text" name="c_id_no" style="width:50px"></td>
+            <td><br><input class="form-control" type="text" name="c_name"></td>
+            <td style="text-align:center"><br><input class="form-control" type="text" name="c_unit" value="3"  ></td>
+            <td align="center"><br><input class="form-control" type="text" name="c_id_no"></td>
             <td align="center" style="width:110px">
-                  <select name="t_day"style="width:100px">
+                  <select class="form-control" name="t_day"style="width:130px">
                       <option value="월,수">월,수</option>
 
                       <option value="화,목">화,목</option>
 
                      <option value="수,금">수,금</option></select>   
                   </select>
-                  <select name="t_time">
+                  <br>
+                  <select class="form-control" name="t_time">
 
              <option value="09:00-10:15">09:00-10:15</option>
 
@@ -55,8 +58,8 @@
             <option value="16:30-17:45">16:30-17:45</option>
 
             <option value="18:00-19:15">18:00-19:15</option></select>   
-            <td align="center" style="width:110px">
-            <select name="t_room">
+            <td align="center" style="width:130px"><br>
+            <select class="form-control" name="t_room">
 
              <option value="명신305">명신305</option>
 
@@ -77,8 +80,11 @@
             <option value="명신514">명신514</option>
 
             <option value="명신516">명신516</option></select>   
-            <td align="center"><input type="text" name="t_max" style="width:50px" ></td>
+            <td align="center"><br><input class="form-control" type="text" name="t_max"  ></td>
             
-            <td align="center"><input type="submit" value="추가" id = "button"></td>
+            <td align="center"><br><input class="btn btn-default btn-sm form-control" type="submit" value="추가" id = "button"></td>
          </form>
          </tr>
+         </tbody>
+         </table>
+         </div>
