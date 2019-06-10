@@ -83,7 +83,7 @@
 	try {           
 		
 		
-			sql = "SELECT c_id, c_id_no FROM enroll WHERE s_id = ? and e_year = ? and e_semester = ?";
+		sql = "SELECT c_id, c_id_no FROM enroll WHERE s_id = ? and e_year = ? and e_semester = ?";
 		
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, session_id);
