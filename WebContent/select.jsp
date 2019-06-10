@@ -21,7 +21,6 @@
 			location.href = "select.jsp?search_year=" + search_year + "&search_semester=" + search_semester;
 		}
 	
-		
 	</script>
 </head>
 <body>
@@ -73,6 +72,32 @@
   		</div>
   		<br/>
 	</form>
+<%!
+public int dayToVal(String day){
+	if(day.equals("월")){
+		return 0;
+	}
+	else if(day.equals("화")){
+		return 1;
+	}
+	else if(day.equals("수")){
+		return 2;
+	}
+	else if(day.equals("목")){
+		return 3;
+	}
+	else if(day.equals("금")){
+		return 4;
+	}
+	else if(day.equals("토")){
+		return 5;
+	}
+	else if(day.equals("일")){
+		return 6;
+	}
+	else return -1;
+}
+%>
 	
 	<div class="container">
 	<table width="75%" align="center" id="select_table" class="table table-hover table-bordered">
@@ -139,13 +164,6 @@
 			sub_rs = pstmt.executeQuery();
 			if (sub_rs.next())
 				current_student_num++;
-			/*
-			sql = "{? = call getStrDay(?)}";
-			cstmt = conn.prepareCall(sql);
-			cstmt.registerOutParameter(1, java.sql.Types.VARCHAR);
-			cstmt.setString(2, int_course_day);
-			cstmt.execute();
-			str_course_day = cstmt.getString(1);*/
 			
 %>
 
@@ -162,7 +180,6 @@
 		}
 		rs.close();
 		pstmt.close();
-		conn.close();
 	} 
 	catch(SQLException ex) { 
 		System.err.println("SQLException: " + ex.getMessage());
@@ -173,6 +190,81 @@
 	</div>
 	<br/>
 	<br/>
+	<div class="timeTable">
+	<table width="75%" align="center" id="select_table" class="table table-hover table-bordered">
+	<tr><td width="20px"></td><td>월</td><td>화</td><td>수</td><td>목</td><td>금</td></tr>
+	</table>
+	
+	<%
+	sql = "SELECT c_id, c_id_no FROM enroll WHERE s_id = ? and e_year = ? and e_semester = ?";
+	
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, session_id);
+	pstmt.setInt(2, Integer.parseInt(search_year));
+	pstmt.setInt(3, Integer.parseInt(search_semester));
+	rs = pstmt.executeQuery();
+	int endHr = 14;
+	int y = 0;
+	while(rs.next()){
+		course_id = rs.getString("c_id");
+		course_id_no = rs.getInt("c_id_no");
+		Statement stmt2 = conn.createStatement();
+		String mySQL2 = "select * from course where c_id = '" + course_id + "' and c_id_no = '" + course_id_no + "'";
+		ResultSet rs2 = stmt2.executeQuery(mySQL2);
+		if(rs2.next()){
+			course_name =  rs2.getString("c_name");
+		}else{
+			break;
+		}
+		
+		mySQL2 = "select * from teach where c_id='" + course_id + "' and c_id_no = '" + course_id_no + "' and t_year = " + search_year + " and t_semester = " + search_semester;
+		rs2 = stmt2.executeQuery(mySQL2);
+		if(rs2.next()){
+			professor_id =  rs2.getString("p_id");
+			int_course_day =  rs2.getString("t_day");
+			course_time =  rs2.getString("t_time");
+			course_place =  rs2.getString("t_room");
+		}else{
+			break;
+		}
+		
+		int hr = Integer.parseInt(course_time.substring(0, 2));
+		int min = Integer.parseInt(course_time.substring(3, 5));
+		int startTime = hr*4+min/15;
+		hr = Integer.parseInt(course_time.substring(6, 8));
+		min = Integer.parseInt(course_time.substring(9, 11));
+		if(endHr < hr)
+			endHr = hr;
+		int endTime = hr*4+min/15;
+		int startPos = (startTime - 36)*20;
+		int height = (endTime - startTime)*20;
+		
+		mySQL2 = "select * from professor where p_id='" + professor_id + "'";
+		rs2 = stmt2.executeQuery(mySQL2);
+		if(rs2.next()){
+			professor_name =  rs2.getString("p_name");
+		}else{
+			break;
+		}
+		
+		int len = int_course_day.length();
+		for(int i=0; i<len; i+=2){
+			int dayPos = 20 + 120*dayToVal(int_course_day.substring(i, i+1));
+			%><div class="course" style="top:<%=startPos%>px; left:<%=dayPos%>px; height:<%=height%>px; 
+			background-color:#aaf17f">
+				<br><%=course_name%><br><%=professor_name%><br><%=course_place%><br><%=course_time%>
+			</div><%
+		}
+	}
+	for(int i=9; i<=endHr; i++){%>
+	<div class="time" style="top:<%=y%>; left:0;"><%=i%></div><%
+	y += 80;
+	conn.close();
+}
+%> 
+</div>	
+<br/>
+
 	<div width="75%" align="center">
 		<p><%=search_year %>년 <%=search_semester %>학기 수강신청 검색 결과 : </p>
 		<p>현재까지 <%=total_course %>과목, 총 <%=total_unit %>학점 수강신청 했습니다 </p>
