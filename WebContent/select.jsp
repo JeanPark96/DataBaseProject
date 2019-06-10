@@ -23,6 +23,25 @@
 	
 	</script>
 </head>
+<style>
+.courseTable{
+	width: 120px;
+	position: absolute;
+	border-color: #D8D8D8;
+}
+.timetable {
+	position: relative; 
+	width: 620px; 
+	margin-left: auto;
+	margin-right: auto;
+	border-color: #D8D8D8;
+}
+.timeSection{
+	width:20px;
+	height:80px;
+	border-color: #D8D8D8;
+}
+</style>
 <body>
 <% 
 	String search_year = request.getParameter("search_year");
@@ -50,6 +69,7 @@
 	CallableStatement cstmt = null; 
 	ResultSet rs = null;
 	ResultSet sub_rs = null;
+	String colorList[]={"#ffffcc","#ffcccc","#ff66ff","66ffff","#00ffff","#ff0033","#6633ff"};
 	String sql;
 	String sub_sql;
 	String dburl = "jdbc:oracle:thin:@localhost:1521:orcl";
@@ -178,8 +198,8 @@ public int dayToVal(String day){
 
 <%
 		}
-		rs.close();
-		pstmt.close();
+		//rs.close();
+		//pstmt.close();
 	} 
 	catch(SQLException ex) { 
 		System.err.println("SQLException: " + ex.getMessage());
@@ -192,10 +212,11 @@ public int dayToVal(String day){
 	<br/>
 	<div class="timeTable">
 	<table width="75%" align="center" id="select_table" class="table table-hover table-bordered">
-	<tr><td width="20px"></td><td>월</td><td>화</td><td>수</td><td>목</td><td>금</td></tr>
+	<tr><td width="30px"></td><td>월</td><td>화</td><td>수</td><td>목</td><td>금</td></tr>
 	</table>
 	
 	<%
+	
 	sql = "SELECT c_id, c_id_no FROM enroll WHERE s_id = ? and e_year = ? and e_semester = ?";
 	
 	pstmt = conn.prepareStatement(sql);
@@ -205,6 +226,7 @@ public int dayToVal(String day){
 	rs = pstmt.executeQuery();
 	int endHr = 14;
 	int y = 0;
+	int countCourse=0;
 	while(rs.next()){
 		course_id = rs.getString("c_id");
 		course_id_no = rs.getInt("c_id_no");
@@ -250,14 +272,16 @@ public int dayToVal(String day){
 		int len = int_course_day.length();
 		for(int i=0; i<len; i+=2){
 			int dayPos = 20 + 120*dayToVal(int_course_day.substring(i, i+1));
-			%><div class="course" style="top:<%=startPos%>px; left:<%=dayPos%>px; height:<%=height%>px; 
-			background-color:#aaf17f">
+			%><div class="courseTable" style="top:<%=startPos+20%>px; left:<%=dayPos%>px; height:<%=height%>px; 
+			background-color:<%=colorList[(countCourse)%8]%>">
 				<br><%=course_name%><br><%=professor_name%><br><%=course_place%><br><%=course_time%>
 			</div><%
 		}
+		if(countCourse<total_course)
+			countCourse++;
 	}
 	for(int i=9; i<=endHr; i++){%>
-	<div class="time" style="top:<%=y%>; left:0;"><%=i%></div><%
+	<div class="timeSection" style="top:<%=y%>; left:0;"><%=i%></div><%
 	y += 80;
 	conn.close();
 }
