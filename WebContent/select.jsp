@@ -25,21 +25,22 @@
 </head>
 <style>
 .courseTable{
-	width: 120px;
+	width: 118px;
 	position: absolute;
 	border-color: #D8D8D8;
+	
 }
 .timetable {
 	position: relative; 
 	width: 620px; 
 	margin-left: auto;
 	margin-right: auto;
-	border-color: #D8D8D8;
 }
 .timeSection{
 	width:20px;
 	height:80px;
 	border-color: #D8D8D8;
+	border-top:2px solid #ddd;
 }
 
 </style>
@@ -73,7 +74,7 @@
 	CallableStatement cstmt = null; 
 	ResultSet rs = null;
 	ResultSet sub_rs = null;
-	String colorList[]={"#ffffcc","#ffcccc","#ff66ff","66ffff","#00ffff","#ff0033","#6633ff"};
+	String colorList[]={"#a8e6cf","#dcedc1","#ffd3b6","#ffaaa5","#ff8b94","#ffcc5c","#96ceb4"};
 	String sql;
 	String sub_sql;
 	String dburl = "jdbc:oracle:thin:@localhost:1521:orcl";
@@ -124,9 +125,10 @@ public int dayToVal(String day){
 %>
 	
 	<div class="container">
-	<table width="75%" align="center" id="select_table" class="table table-hover table-bordered">
+	<div class="timetable">
+	<table id="select_table" class="table table-bordered">
 	<tr><td width="30px"></td><td>월</td><td>화</td><td>수</td><td>목</td><td>금</td></tr>
-	</table>	
+	</table></div>	
 	<table width="75%" align="center" id="select_table" class="table table-hover table-bordered">
 		<thead style="text-align:center">
 		
@@ -221,10 +223,10 @@ public int dayToVal(String day){
 
 		int len = int_course_day.length();
 		for(int i=0; i<len; i+=2){
-			int dayPos = 20 + 120*dayToVal(int_course_day.substring(i, i+1));
-			%><div class="courseTable" style="top:<%=startPos+20%>px; left:<%=dayPos%>px; height:<%=height%>px; 
+			int dayPos = 20 + 118*dayToVal(int_course_day.substring(i, i+1));
+			%><div class="courseTable" style="top:<%=startPos%>px; left:<%=dayPos+10%>px; height:<%=height%>px; 
 			background-color:<%=colorList[(countCourse)%8]%>">
-				<br><%=course_name%><br><%=professor_name%><br><%=course_place%><br><%=course_time%>
+				<%=course_name%><br><%=professor_name%><br><%=course_place%><br><%=course_time%>
 			</div><%
 		}
 		if(countCourse<total_course)

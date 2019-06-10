@@ -8,8 +8,12 @@
 <title>수강 신청 시스템 로그인</title>
 </head>
 <body class="text-center">
+<br>
+<br>
+<img src="logo.gif">
     <div class="container">
         <div class="col-lg-4"></div>
+        
         <div class="col-lg-4">
                 <form method = "post" action="login_verify.jsp">
                     <h2 style="text-align:center;">LOG IN</h2>
