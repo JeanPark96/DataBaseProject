@@ -32,7 +32,7 @@
 	    	 pstmt.setString(4, p_college);
 	    	 pstmt.setString(5, p_major);
 	    	 pstmt.setString(6, p_id);
-	    	 ResultSet rs = pstmt.executeQuery();
+	    	 int rs = pstmt.executeUpdate();
 	%>
 	<script>
 	   alert("강사정보가 수정되었습니다." );

@@ -28,7 +28,7 @@
 	myConn = DriverManager.getConnection(dburl, user, passwd);
 	stmt = myConn.createStatement();
 	mySQL = "DELETE FROM enroll WHERE s_id='"+s_id+"' and c_id='"+c_id+"' and c_id_no='"+c_id_no+"'";
-	ResultSet resultSet = stmt.executeQuery(mySQL);
+	int resultSet = stmt.executeUpdate(mySQL);
 
 	%> 
 	<script>
