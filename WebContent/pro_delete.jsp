@@ -41,7 +41,7 @@
 	String user = "db";                                       
 	String passwd = "0000";
 %>
-	
+	<br>
 	<div class="container">
 	<table width="75%" align="center" id="select_table" class="table table-hover table-bordered">
 		<thead style="text-align:center">

@@ -16,7 +16,7 @@ String c_id = request.getParameter("c_id");
 int c_id_no = Integer.parseInt(request.getParameter("c_id_no"));
 String search_year = request.getParameter("search_year");
 String search_semester = request.getParameter("search_semester");
-
+int Students = Integer.parseInt(request.getParameter("current_student"));
 String s_id = null;
 String s_name = null;
 String s_grade = null;
@@ -32,6 +32,15 @@ Connection conn = null;
 PreparedStatement pstmt = null; 
 ResultSet rs = null;
 ResultSet sub_rs = null;
+
+if(Students == 0){
+	%>  <script> 
+      alert("수강 학생이 없습니다"); 
+      location.href="pro_select.jsp";  
+   </script>
+   <%
+}
+else{
 %>
 
 <%@include file="top.jsp"%>
@@ -86,6 +95,7 @@ try {
 	catch(SQLException ex) { 
 		System.err.println("SQLException: " + ex.getMessage());
 	}
+}
 %>
 		</tr>
 	</table>
