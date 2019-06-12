@@ -96,7 +96,8 @@
 	<a class="btn btn-default btn-sm form-control" href="insert_verify.jsp?c_id=<%= c_id %>&c_id_no=<%= c_id_no %>">╫ец╩</a> 
 	</td>
 	</tr>
-	<%}
+	<% current_student_num=0;}
+		
 	}
 	stmt.close();
 	myConn.close();
