@@ -29,7 +29,7 @@
 	    	 pstmt.setString(2, s_name);
 	    	 pstmt.setString(3, s_email);
 	    	 pstmt.setString(4, s_id);
-	    	 ResultSet rs = pstmt.executeQuery();
+	    	 int rs = pstmt.executeUpdate();
 	%>
 	<script>
 	   alert("학생정보가 수정되었습니다." );

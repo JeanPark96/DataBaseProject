@@ -64,6 +64,8 @@
 		month = myResultSet.getInt(2);
 	}
 	if(year==null) year="2019";
+	if(month==11 || month==12)
+		year=Integer.toString(Integer.parseInt(year)+1);
 	if(month==0) month=5; 
 	if(month>=5 && month<10){
 		semester="2";
