@@ -62,7 +62,7 @@
 			<option class="form-control" value="c_name">과목 이름</option>
 			<option class="form-control" value="c_major">전공</option></select>
 		<input class="form-control" name="val" id="enterValue" size="30">
-	    <button class="btn btn-primary btn-sm form-control">SEARCH</button>
+	    <button class="btn btn-primary btn-sm form-control">검색</button>
   		</div>
   		<br/>   
 	</form>

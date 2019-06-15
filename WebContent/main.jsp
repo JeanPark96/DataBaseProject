@@ -18,7 +18,12 @@
 <% } %>
 </table>
 <br><br>
-<img src="noonsong.JPG" style="text-align:center">
+<% if (session_id != null) { %>
+<img src="noonsong2.jpg" width="220px" height="220px" style="text-align:center">
+<% } else { %>
+<img src="noonsong.jpg" width="220px" height="220px" style="text-align:center">
+<% } %>
+
 
 </body>
 </html>

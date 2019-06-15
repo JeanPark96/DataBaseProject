@@ -93,7 +93,7 @@
    				<label for="inputSemester" class="control-label">학기</label>
       			<input type="text" class="form-control" name="search_semester" value="<%=search_semester %>" size="10"/>
       		</div>
-   			<input class="btn btn-primary btn-sm form-control" type="button" value="SEARCH" onclick="onSearch()"/>
+   			<input class="btn btn-primary btn-sm form-control" type="button" value="검색" onclick="onSearch()"/>
   		</div>
   		<br/>
 	</form>
