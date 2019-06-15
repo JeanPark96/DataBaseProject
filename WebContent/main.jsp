@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <title>데이터베이스를 활용한 수강신청 시스템입니다.</title>
 </head>
-<body>
+<body class="text-center">
 <%@include file="top.jsp"%>
 <table width="75%" align="center" height="100%">
 <% if (session_id != null) { %>
@@ -17,6 +17,8 @@
 <tr> <td align="center">로그인한 후 사용하세요.</td> </tr>
 <% } %>
 </table>
+<br><br>
+<img src="noonsong.JPG" style="text-align:center">
 
 </body>
 </html>
