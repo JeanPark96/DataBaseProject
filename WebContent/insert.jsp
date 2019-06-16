@@ -75,10 +75,12 @@
 			String t_day=myResultSet.getString("t_day");
 			int t_max=myResultSet.getInt("t_max");
 			
-			sub_sql = "SELECT s_id FROM enroll WHERE c_id = ? and c_id_no = ?";
+			sub_sql = "SELECT s_id FROM enroll WHERE c_id = ? and c_id_no = ? and e_year=? and e_semester=?";
 			pstmt2 = myConn.prepareStatement(sub_sql);
 			pstmt2.setString(1, c_id);
 			pstmt2.setInt(2, c_id_no);
+			pstmt2.setInt(3, nyear);
+			pstmt2.setInt(4, nsemester);
 			ResultSet sub_rs = pstmt2.executeQuery();
 			while (sub_rs.next())
 				current_student_num++;
