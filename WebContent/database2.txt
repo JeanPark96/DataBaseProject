@@ -116,7 +116,6 @@ CREATE TABLE enroll
 
 INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616681', '21003184', 1, 2019, 1);
 INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616681', '21001715', 1, 2019, 1);
-INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616681', '21103531', 1, 2019, 1);
 
 INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616913', '21003184', 1, 2019, 1);
 INSERT INTO enroll(s_id, c_id, c_id_no, e_year, e_semester) VALUES ('1616913', '21001715', 1, 2019, 1);
